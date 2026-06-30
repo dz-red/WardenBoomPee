@@ -1,0 +1,18 @@
+name: BoomPee
+version: 1.0
+main: dev.wardenpee.BoomPee
+api-version: '1.21'
+description: Пссс... Блее... Угх...
+commands:
+  pee:
+    description: Отлить
+    usage: /pee
+  vomit:
+    description: Стошнить
+    usage: /vomit
+  poop:
+    description: Присесть
+    usage: /poop
+  fart:
+    description: Пукнуть
+    usage: /fart
