@@ -102,7 +102,7 @@ public class BoomPee extends JavaPlugin {
         long rem = cooldownRemaining(vomitCooldowns, id);
         if (rem > 0) { player.sendMessage("§7Подожди ещё §e" + rem + " §7сек."); return true; }
         vomitCooldowns.put(id, System.currentTimeMillis());
-        player.addPotionEffect(new PotionEffect(PotionEffectType.NAUSEA, DURATION_TICKS, 0, false, false));
+        player.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, DURATION_TICKS, 0, false, false));
         BukkitRunnable task = new BukkitRunnable() {
             int tick = 0;
             @Override public void run() {
@@ -177,7 +177,7 @@ public class BoomPee extends JavaPlugin {
             double vx = behind.getX() + (Math.random() - 0.5) * spread;
             double vy = (Math.random()) * 0.3;
             double vz = behind.getZ() + (Math.random() - 0.5) * spread;
-            w.spawnParticle(Particle.DUST, butt, 1, (Math.random()-0.5)*0.5 + behind.getX()*0.4, Math.random()*0.25, (Math.random()-0.5)*0.5 + behind.getZ()*0.4, 0, GAS);
+            w.spawnParticle(Particle.REDSTONE, butt, 1, (Math.random()-0.5)*0.5 + behind.getX()*0.4, Math.random()*0.25, (Math.random()-0.5)*0.5 + behind.getZ()*0.4, 0, GAS);
         }
         return true;
     }
@@ -210,7 +210,7 @@ public class BoomPee extends JavaPlugin {
             }
             if (hitEntity) { spawnSplatter(loc, fwd, false, dust, dustSmall); return; }
 
-            w.spawnParticle(Particle.DUST, loc, 1, 0.02, 0.02, 0.02, 0, dust);
+            w.spawnParticle(Particle.REDSTONE, loc, 1, 0.02, 0.02, 0.02, 0, dust);
         }
     }
 
@@ -218,14 +218,14 @@ public class BoomPee extends JavaPlugin {
                                Particle.DustOptions dust, Particle.DustOptions dustSmall) {
         World w = loc.getWorld();
         if (hitFloor) {
-            w.spawnParticle(Particle.DUST, loc, 5, 0.35, 0.05, 0.35, 0, dust);
-            w.spawnParticle(Particle.DUST, loc.clone().add(0, 0.05, 0), 3, 0.5, 0.02, 0.5, 0, dustSmall);
+            w.spawnParticle(Particle.REDSTONE, loc, 5, 0.35, 0.05, 0.35, 0, dust);
+            w.spawnParticle(Particle.REDSTONE, loc.clone().add(0, 0.05, 0), 3, 0.5, 0.02, 0.5, 0, dustSmall);
         } else {
             Vector side = new Vector(-streamDir.getZ(), 0, streamDir.getX());
-            w.spawnParticle(Particle.DUST, loc, 4, 0.15, 0.3, 0.15, 0, dust);
-            w.spawnParticle(Particle.DUST, loc.clone().add(side.clone().multiply(0.3)),  3, 0.1, 0.25, 0.1, 0, dustSmall);
-            w.spawnParticle(Particle.DUST, loc.clone().add(side.clone().multiply(-0.3)), 3, 0.1, 0.25, 0.1, 0, dustSmall);
-            w.spawnParticle(Particle.DUST, loc.clone().add(0, -0.2, 0), 2, 0.1, 0.15, 0.1, 0, dustSmall);
+            w.spawnParticle(Particle.REDSTONE, loc, 4, 0.15, 0.3, 0.15, 0, dust);
+            w.spawnParticle(Particle.REDSTONE, loc.clone().add(side.clone().multiply(0.3)),  3, 0.1, 0.25, 0.1, 0, dustSmall);
+            w.spawnParticle(Particle.REDSTONE, loc.clone().add(side.clone().multiply(-0.3)), 3, 0.1, 0.25, 0.1, 0, dustSmall);
+            w.spawnParticle(Particle.REDSTONE, loc.clone().add(0, -0.2, 0), 2, 0.1, 0.15, 0.1, 0, dustSmall);
         }
     }
 

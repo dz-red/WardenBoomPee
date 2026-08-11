@@ -344,8 +344,8 @@ public class Boombox implements Listener {
             playAudio.invoke(pm, voicechatApi, path, block, songName, distance);
             return true;
         } catch (Throwable t) {
-            plugin.getLogger().warning(
-                    "CustomDiscs integration failed: " + t.getMessage());
+            Throwable cause = (t instanceof java.lang.reflect.InvocationTargetException && t.getCause()!=null) ? t.getCause() : t;
+            plugin.getLogger().log(java.util.logging.Level.WARNING, "CustomDiscs integration failed — REAL CAUSE:", cause);
             return false;
         }
     }
@@ -455,7 +455,8 @@ public class Boombox implements Listener {
             activeAudioPlayers.put(player.getUniqueId(), audioPlayer);
             return true;
         } catch (Throwable t) {
-            plugin.getLogger().warning("Boombox custom-disc follow failed: " + t);
+            Throwable cause = (t instanceof java.lang.reflect.InvocationTargetException && t.getCause()!=null) ? t.getCause() : t;
+            plugin.getLogger().log(java.util.logging.Level.WARNING, "Boombox custom-disc follow failed — REAL CAUSE:", cause);
             return false;
         }
     }
